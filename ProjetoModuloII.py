@@ -134,5 +134,12 @@ class Grafo():
         # neste print, optei por separar em duas listas os melhores amigos e, em seguida, os amigos comuns. 
         # se necessário, pode-se utilizar a lista acima (lista_amigos_final), que contém todos os amigos.
         return print(f'Os melhores amigos do usuario {usuario} são: {lista_melhor_amigo}\nOs demais amigos do usuario {usuario} são {lista_amigos_comum}')
-        
-                
+
+g = Grafo()        
+g.cria_grafo()
+g.adjacencia
+g.encontra_caminho("helena42", "isadora45")
+g.exibe_Nrpessoas_usuario_segue("helena42")
+g.exibe_seguidores_usuario_possui("helena42")
+g.encontra_top_influencer(6)
+g.melhores_amigos("helena42")    
