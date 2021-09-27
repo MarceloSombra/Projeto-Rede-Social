@@ -116,6 +116,7 @@ class Grafo():
         # se necessário, pode-se utilizar a lista acima (lista_amigos_final), que contém todos os amigos.
         return print(f'Os melhores amigos do usuario {usuario} são: {lista_melhor_amigo}\nOs demais amigos do usuario {usuario} são {lista_amigos_comum}')
 
+# função para criar o Grafo a partir dos dados do arquivo CSV
 def cria_grafo():
     g = Grafo()
     #importa o arquivo csv (usuarios)
