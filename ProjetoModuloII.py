@@ -10,26 +10,7 @@ class Grafo():
     
     def conecta(self, origem, destino, peso):
         self.adjacencia[origem][destino] = peso
-       
-    def cria_grafo(self):
-        g = Grafo()
-        #importa o arquivo csv (usuarios)
-        with open('usuarios.csv', encoding='utf-8') as usuarios:
-            tabela_csv = csv.reader(usuarios, delimiter=',', quoting=csv.QUOTE_NONE)
-
-            for linha in tabela_csv:
-                user_id_origin = linha[1]
-                g.adiciona(user_id_origin)
-
-        #importa o arquivo csv (conexões), contendo o username e as respectivas pessoas que este user segue
-        with open('conexoes.csv', encoding='utf-8') as conexoes:
-            conexoes_csv = csv.reader(conexoes, delimiter=',', quoting=csv.QUOTE_NONE)
-
-            for linha in conexoes_csv:
-                g.conecta(str(linha[0]), str(linha[1]), linha[2])
-
-        return g
-    
+          
     # encontra o caminho entre um usuário X e usuário Y   
     def encontra_caminho(self, origem, destino):
         fila = [origem] # fila inicia-se com o usuário origem
@@ -135,8 +116,27 @@ class Grafo():
         # se necessário, pode-se utilizar a lista acima (lista_amigos_final), que contém todos os amigos.
         return print(f'Os melhores amigos do usuario {usuario} são: {lista_melhor_amigo}\nOs demais amigos do usuario {usuario} são {lista_amigos_comum}')
 
-g = Grafo()        
-g.cria_grafo()
+def cria_grafo():
+    g = Grafo()
+    #importa o arquivo csv (usuarios)
+    with open('usuarios.csv', encoding='utf-8') as usuarios:
+        tabela_csv = csv.reader(usuarios, delimiter=',', quoting=csv.QUOTE_NONE)
+
+        for linha in tabela_csv:
+            user_id_origin = linha[1]
+            g.adiciona(user_id_origin)
+
+    #importa o arquivo csv (conexões), contendo o username e as respectivas pessoas que este user segue
+    with open('conexoes.csv', encoding='utf-8') as conexoes:
+        conexoes_csv = csv.reader(conexoes, delimiter=',', quoting=csv.QUOTE_NONE)
+
+        for linha in conexoes_csv:
+            g.conecta(str(linha[0]), str(linha[1]), linha[2])
+
+    return g
+
+        
+g = cria_grafo()
 g.adjacencia
 g.encontra_caminho("helena42", "isadora45")
 g.exibe_Nrpessoas_usuario_segue("helena42")
